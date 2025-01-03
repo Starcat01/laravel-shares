@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <div class="container">
-    <h1>Manage Media for "{{ $travelMemory->title }}"</h1>
+    <h4>Manage Media for "{{ $travelMemory->title }}"</h4>
     @if(session('success'))
         <div class="alert alert-success">
             {{ session('success') }}

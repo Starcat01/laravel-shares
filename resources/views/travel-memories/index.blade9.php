@@ -25,14 +25,16 @@
                     </p>
                 </div>
                 <div class="card-body">
-                    <div class="d-flex justify-content-between align-items-start mb-3">
+                    <div class="d-flex justify-content-between align-items-start">
                         <div class="flex-fill me-3">
                             <p>{{ $memory->description }}</p>
                         </div>
 
+                        <!-- Display Map link -->
                         @if(!empty($memory->map_url))
-                            <div>
-                                <a href="{{ $memory->map_url }}" target="_blank" class="btn btn-info">View on Map</a>
+                            <div class="mb-3">
+                                <h6>View on Map:</h6>
+                                <a href="{{ $memory->map_url }}" target="_blank" class="btn btn-info">Open Map</a>
                             </div>
                         @endif
                     </div>
@@ -41,16 +43,12 @@
                     @if(!empty($memory->photos) && is_array($memory->photos))
                         <div class="mb-3">
                             <h5>Photos:</h5>
-                            <div class="row">
-                                @foreach($memory->photos as $photo)
-                                    <div class="col-md-6 mb-3">
-                                        <img src="{{ asset('storage/' . $photo) }}" 
-                                            alt="Photo" 
-                                            class="img-thumbnail scalable-photo" 
-                                            style="width: 100%; height: auto;">
-                                    </div>
-                                @endforeach
-                            </div>
+                            @foreach($memory->photos as $photo)
+                                <img src="{{ asset('storage/' . $photo) }}" 
+                                    alt="Photo" 
+                                    class="img-thumbnail scalable-photo" 
+                                    width="150">
+                            @endforeach
                         </div>
                     @endif
                     
@@ -58,16 +56,12 @@
                     @if(!empty($memory->videos) && is_array($memory->videos))
                         <div class="mb-3">
                             <h5>Videos:</h5>
-                            <div class="row">
-                                @foreach($memory->videos as $video)
-                                    <div class="col-md-6 mb-3">
-                                        <video controls class="w-100">
-                                            <source src="{{ asset('storage/' . $video) }}" type="video/mp4">
-                                            Your browser does not support the video tag.
-                                        </video>
-                                    </div>
-                                @endforeach
-                            </div>
+                            @foreach($memory->videos as $video)
+                                <video controls class="d-block mb-2" width="300">
+                                    <source src="{{ asset('storage/' . $video) }}" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            @endforeach
                         </div>
                     @endif
 
@@ -107,10 +101,9 @@
     }
 
     .scalable-photo.scaled {
-        transform: scale(2); /* Scale up */
+        transform: scale(3); /* Scale up */
         z-index: 1000; /* Ensure the photo stays on top */
         position: relative;
     }
 </style>
 @endsection
-
