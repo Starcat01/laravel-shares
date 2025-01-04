@@ -198,7 +198,7 @@ class TravelMemoryController extends Controller
        $travelMemory->save();
 
        // Redirect back with a success message
-       return redirect()->route('travel-memories.show', $travelMemory->id)->with('success', 'Media deleted successfully.');
+       return redirect()->route('travel-memories.index', $travelMemory->id)->with('success', 'Media deleted successfully.');
    }
 
     /**
